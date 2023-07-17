@@ -10,7 +10,7 @@ namespace AddressBook
             AddressBooks address = new AddressBooks();
             
             while (flag) {
-            Console.WriteLine("1.create new contact \n2.edit contact");
+            Console.WriteLine("1.create new contact \n2.edit contact \n3.Display");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -21,6 +21,9 @@ namespace AddressBook
                         Console.WriteLine("Enter first name or last name");
                         string name = Console.ReadLine();
                         address.EditContact(name);
+                        break;
+                    case 3:
+                        address.Display();
                         break;
                     default:
                         flag=false;
