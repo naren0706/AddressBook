@@ -55,5 +55,16 @@ namespace AddressBook
                 + "\n" + contact.Email + "\n" + contact.PhoneNumber);
             }
         }
+
+        public void DeleteContact(String name)
+        {
+            Contact contact;
+            foreach (var data in addressBook)
+            {
+                if (data.FirstName.Equals(name) || data.LastName.Equals(name))
+                    contact= data;
+                addressBook.Remove(contact);
+            }
+        }
     }
 }

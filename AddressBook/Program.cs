@@ -25,6 +25,11 @@ namespace AddressBook
                     case 3:
                         address.Display();
                         break;
+                    case 4:
+                        Console.WriteLine("Enter first name or last name");
+                        string name1 = Console.ReadLine();
+                        address.DeleteContact(name1);
+                        break;
                     default:
                         flag=false;
                         break;
