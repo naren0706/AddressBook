@@ -20,7 +20,7 @@ namespace AddressBook
                     case 2:
                         Console.WriteLine("Enter your name");
                         string name = Console.ReadLine(); 
-                        Console.WriteLine("Enter first name or last name");
+                        Console.WriteLine("Enter first name or last name to edit contact");
                         string contactname = Console.ReadLine();
                         address.EditContact(name, contactname);
                         break;
@@ -30,7 +30,7 @@ namespace AddressBook
                     case 4:
                         Console.WriteLine("Enter your name");
                         string name1 = Console.ReadLine();
-                        Console.WriteLine("Enter first name or last name");
+                        Console.WriteLine("Enter first name or last name to delete contact");
                         string contactname1 = Console.ReadLine();
                         address.DeleteContact(name1, contactname1);
                         break;

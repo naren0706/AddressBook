@@ -5,7 +5,7 @@ namespace AddressBook
 {
     internal class AddressBooks
     {
-            List<Contact> addressBook = new List<Contact>();
+        List<Contact> addressBook = new List<Contact>();
         Dictionary<string,List<Contact>> dict = new Dictionary<string, List<Contact>>();
 
         public void CreateContact()
@@ -16,22 +16,26 @@ namespace AddressBook
                 FirstName = Console.ReadLine(),
                 LastName = Console.ReadLine(),
                 Address  = Console.ReadLine(),
-                City= Console.ReadLine(),
+                City = Console.ReadLine(),
                 State = Console.ReadLine(),
                 Zip = Console.ReadLine(),
                 Email = Console.ReadLine(),
                 PhoneNumber = Console.ReadLine(),
+               
             };
             addressBook.Add(contact);
-            Console.WriteLine(contact.FirstName+"\n"+contact.LastName+"\n"+contact.Address+"\n"+contact.City+"\n"+contact.State+"\n"+contact.Zip
-                +"\n"+contact.Email+"\n"+contact.PhoneNumber);
+            Console.WriteLine(contact.FirstName+" | "+contact.LastName+" | "+contact.Address+" | "+contact.City+" | "+contact.State+" | " +contact.Zip
+                +" | " +contact.Email+" | " +contact.PhoneNumber);
         }
         public void AddAddressBookToDictonary()
         {
+            Console.WriteLine("Enter unique name");
             string uniqueName = Console.ReadLine();
             dict.Add(uniqueName, addressBook);
-            addressBook = null;
+            addressBook = new List<Contact>();
         }
+       
+      
         public void EditContact(string name, string contactName)
         {
             foreach (var data in dict)
@@ -63,10 +67,11 @@ namespace AddressBook
             foreach (var data in dict)
             {
                 Console.WriteLine(data.Key);
-                foreach (var contact in addressBook)
+                List<Contact> val = data.Value;
+                foreach (var contact in val)
                 {
-                    Console.WriteLine(contact.FirstName + "\n" + contact.LastName + "\n" + contact.Address + "\n" + contact.City + "\n" + contact.State + "\n" + contact.Zip
-                    + "\n" + contact.Email + "\n" + contact.PhoneNumber);
+                    Console.WriteLine(contact.FirstName + " | " + contact.LastName + " | " + contact.Address + " | " + contact.City + " | " + contact.State + " | " + contact.Zip
+                    + " | " + contact.Email + " | " + contact.PhoneNumber);
                 }
             }
         }
