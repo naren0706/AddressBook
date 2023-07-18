@@ -1,31 +1,28 @@
-﻿using System.Runtime.InteropServices;
-using System.Threading.Channels;
-
-namespace AddressBook
+﻿namespace AddressBook
 {
     internal class AddressBooks
     {
         List<Contact> addressBook = new List<Contact>();
-        Dictionary<string,List<Contact>> dict = new Dictionary<string, List<Contact>>();
+        Dictionary<string, List<Contact>> dict = new Dictionary<string, List<Contact>>();
 
         public void CreateContact()
         {
-                Console.WriteLine("Enter Firstname, Last Name , address , city, state , zip , Email, PhoneNumber :");
+            Console.WriteLine("Enter Firstname, Last Name , address , city, state , zip , Email, PhoneNumber :");
             Contact contact = new Contact()
-            { 
+            {
                 FirstName = Console.ReadLine(),
                 LastName = Console.ReadLine(),
-                Address  = Console.ReadLine(),
+                Address = Console.ReadLine(),
                 City = Console.ReadLine(),
                 State = Console.ReadLine(),
                 Zip = Console.ReadLine(),
                 Email = Console.ReadLine(),
                 PhoneNumber = Console.ReadLine(),
-               
+
             };
             addressBook.Add(contact);
-            Console.WriteLine(contact.FirstName+" | "+contact.LastName+" | "+contact.Address+" | "+contact.City+" | "+contact.State+" | " +contact.Zip
-                +" | " +contact.Email+" | " +contact.PhoneNumber);
+            Console.WriteLine(contact.FirstName + " | " + contact.LastName + " | " + contact.Address + " | " + contact.City + " | " + contact.State + " | " + contact.Zip
+                + " | " + contact.Email + " | " + contact.PhoneNumber);
         }
         public void AddAddressBookToDictonary()
         {
@@ -34,8 +31,8 @@ namespace AddressBook
             dict.Add(uniqueName, addressBook);
             addressBook = new List<Contact>();
         }
-       
-      
+
+
         public void EditContact(string name, string contactName)
         {
             foreach (var data in dict)
@@ -76,7 +73,7 @@ namespace AddressBook
             }
         }
 
-        public void DeleteContact(String name,string contactName)
+        public void DeleteContact(String name, string contactName)
         {
             Contact contact = new Contact();
             foreach (var data in dict)
