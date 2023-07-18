@@ -31,8 +31,6 @@
             dict.Add(uniqueName, addressBook);
             addressBook = new List<Contact>();
         }
-
-
         public void EditContact(string name, string contactName)
         {
             foreach (var data in dict)
@@ -72,7 +70,6 @@
                 }
             }
         }
-
         public void DeleteContact(String name, string contactName)
         {
             Contact contact = new Contact();

@@ -8,9 +8,9 @@ namespace AddressBook
             Console.WriteLine("Welcome to address book problem statement");
             bool flag = true;
             AddressBooks address = new AddressBooks();
-            
-            while (flag) {
-            Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary");
+            while (flag) 
+            {
+                Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -41,9 +41,6 @@ namespace AddressBook
                         break;
                 }            
             }
-
-            address.Display();
-
         }
     }
 }
