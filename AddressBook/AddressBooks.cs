@@ -1,10 +1,23 @@
-﻿namespace AddressBook
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+
+namespace AddressBook
 {
     internal class AddressBooks
     {
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string, List<Contact>> dict = new Dictionary<string, List<Contact>>();
 
+        public void AddToJsonFile(string filePath)
+        {
+            var json = JsonConvert.SerializeObject(dict.Keys);
+            File.WriteAllText(filePath, json);
+        }
+        public void ReadInventoryJson(string filePath)
+        {
+            var json = File.ReadAllText(filePath);
+            dict = JsonConvert.DeserializeObject(json);
+        }
         public void CreateContact()
         {
             Console.WriteLine("Enter Firstname, Last Name , address , city, state , zip , Email, PhoneNumber :");

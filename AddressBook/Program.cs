@@ -3,6 +3,7 @@ namespace AddressBook
 {
     class Program
     {
+        static string filePath = @"E:\BridgeGateProblems\AddressBook\AddressBook\AddressBookData.json";
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to address book problem statement");
@@ -10,7 +11,7 @@ namespace AddressBook
             AddressBooks address = new AddressBooks();
             while (flag) 
             {
-                Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary");
+                Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary\n6.Add To JsonFile");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -35,6 +36,9 @@ namespace AddressBook
                         address.DeleteContact(name1, contactname1);
                         break;
                     case 5:address.AddAddressBookToDictonary();
+                        break;
+                    case 6:
+                        address.AddToJsonFile(filePath);
                         break;
                     default:
                         flag=false;
