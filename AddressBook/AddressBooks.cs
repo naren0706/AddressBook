@@ -7,7 +7,10 @@ namespace AddressBook
     {
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string, List<Contact>> dict = new Dictionary<string, List<Contact>>();
+        Dictionary<string, List<Contact>> dictCityPerson = new Dictionary<string, List<Contact>>();
+        Dictionary<string, List<Contact>> dictStatePerson = new Dictionary<string, List<Contact>>();
 
+        
         public void AddToJsonFile(string filePath)
         {
             var json = JsonConvert.SerializeObject(dict);
@@ -152,6 +155,10 @@ namespace AddressBook
             {
                 Console.WriteLine("no contacts found");
             }
+            else
+            {
+                dictCityPerson.Add(city, result);
+            }
         }
 
         internal void SearchUsingState()
@@ -173,6 +180,10 @@ namespace AddressBook
             if (!isPresent)
             {
                 Console.WriteLine("no contacts found");
+            }
+            else
+            {
+                dictCityPerson.Add(city, result);
             }
         }
     }
