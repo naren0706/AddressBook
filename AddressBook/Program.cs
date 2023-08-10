@@ -11,7 +11,7 @@ namespace AddressBook
             AddressBooks address = new AddressBooks();
             while (flag) 
             {
-                Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary\n6.Add To JsonFile");
+                Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary\n6.Add To JsonFile\n7.Read From Dictonary");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -40,6 +40,8 @@ namespace AddressBook
                     case 6:
                         address.AddToJsonFile(filePath);
                         break;
+                    case 7:
+                        address.ReadInventoryJson(filePath); break;
                     default:
                         flag=false;
                         break;

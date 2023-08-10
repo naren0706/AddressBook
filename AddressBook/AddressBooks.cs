@@ -10,13 +10,13 @@ namespace AddressBook
 
         public void AddToJsonFile(string filePath)
         {
-            var json = JsonConvert.SerializeObject(dict.Keys);
+            var json = JsonConvert.SerializeObject(dict);
             File.WriteAllText(filePath, json);
         }
         public void ReadInventoryJson(string filePath)
         {
-            var json = File.ReadAllText(filePath);
-            dict = JsonConvert.DeserializeObject(json);
+            var json = File.ReadAllText(filePath);            
+            dict = JsonConvert.DeserializeObject<Dictionary<string, List<Contact>>>(json);
         }
         public void CreateContact()
         {
@@ -74,7 +74,7 @@ namespace AddressBook
         {
             foreach (var data in dict)
             {
-                Console.WriteLine(data.Key);
+                Console.WriteLine("Key : "+data.Key);
                 List<Contact> val = data.Value;
                 foreach (var contact in val)
                 {

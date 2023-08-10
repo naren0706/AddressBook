@@ -8,14 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AddressBookData.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="AddressBookData.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
