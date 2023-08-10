@@ -33,9 +33,30 @@ namespace AddressBook
                 PhoneNumber = Console.ReadLine(),
 
             };
-            addressBook.Add(contact);
-            Console.WriteLine(contact.FirstName + " | " + contact.LastName + " | " + contact.Address + " | " + contact.City + " | " + contact.State + " | " + contact.Zip
-                + " | " + contact.Email + " | " + contact.PhoneNumber);
+            Console.WriteLine("_______________");
+            bool isPresent = false;
+            foreach (var li in dict)
+            {
+                foreach (var item1 in li.Value)
+                {
+                    if (item1.FirstName.Equals(contact.FirstName))
+                    {
+                        isPresent = true;
+                        break;
+                    }
+                }
+            }
+            Console.WriteLine("_______________");
+            if (isPresent)
+            {
+                Console.WriteLine("Name is already in the address book");
+            }
+            else
+            {
+                addressBook.Add(contact);
+                Console.WriteLine(contact.FirstName + " | " + contact.LastName + " | " + contact.Address + " | " + contact.City + " | " + contact.State + " | " + contact.Zip
+                    + " | " + contact.Email + " | " + contact.PhoneNumber);
+            }
         }
         public void AddAddressBookToDictonary()
         {
