@@ -65,8 +65,14 @@ namespace AddressBook
             dict.Add(uniqueName, addressBook);
             addressBook = new List<Contact>();
         }
-        public void EditContact(string name, string contactName)
+        public void EditContact()
         {
+
+            Console.WriteLine("Enter your name");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter first name or last name to edit contact");
+            string contactName = Console.ReadLine();
+
             foreach (var data in dict)
             {
                 if (data.Key.Equals(name))
@@ -104,8 +110,13 @@ namespace AddressBook
                 }
             }
         }
-        public void DeleteContact(String name, string contactName)
+        public void DeleteContact()
         {
+
+            Console.WriteLine("Enter your name");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter first name or last name to delete contact");
+            string contactName = Console.ReadLine();
             Contact contact = new Contact();
             foreach (var data in dict)
             {
@@ -130,6 +141,28 @@ namespace AddressBook
             foreach (var item in dict)
             {
                  result = item.Value.Where(x => x.City == city).ToList();
+            }
+            foreach (var contact in result)
+            {
+                Console.WriteLine(contact.FirstName + " | " + contact.LastName + " | " + contact.Address + " | " + contact.City + " | " + contact.State + " | " + contact.Zip
+                + " | " + contact.Email + " | " + contact.PhoneNumber);
+                isPresent = true;
+            }
+            if (!isPresent)
+            {
+                Console.WriteLine("no contacts found");
+            }
+        }
+
+        internal void SearchUsingState()
+        {
+            Console.WriteLine("Enter the State name to search");
+            string state = Console.ReadLine();
+            bool isPresent = false;
+            List<Contact> result = new List<Contact>();
+            foreach (var item in dict)
+            {
+                result = item.Value.Where(x => x.State == state).ToList();
             }
             foreach (var contact in result)
             {
