@@ -120,5 +120,27 @@ namespace AddressBook
                 }
             }
         }
+
+        internal void SearchUsingCity()
+        {
+            Console.WriteLine("Enter the city name to search");
+            string city = Console.ReadLine();
+            bool isPresent = false;
+            List<Contact> result = new List<Contact>();
+            foreach (var item in dict)
+            {
+                 result = item.Value.Where(x => x.City == city).ToList();
+            }
+            foreach (var contact in result)
+            {
+                Console.WriteLine(contact.FirstName + " | " + contact.LastName + " | " + contact.Address + " | " + contact.City + " | " + contact.State + " | " + contact.Zip
+                + " | " + contact.Email + " | " + contact.PhoneNumber);
+                isPresent = true;
+            }
+            if (!isPresent)
+            {
+                Console.WriteLine("no contacts found");
+            }
+        }
     }
 }
