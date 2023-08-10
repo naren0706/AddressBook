@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AddressBook
 {
@@ -183,8 +184,34 @@ namespace AddressBook
             }
             else
             {
-                dictCityPerson.Add(city, result);
+                dictCityPerson.Add(state, result);
             }
+        }
+
+        internal void getCityContactsCount()
+        {
+            Console.WriteLine("Enter the State name to search");
+            string city = Console.ReadLine();
+            bool isPresent = false;
+            List<Contact> result = new List<Contact>();
+            foreach (var item in dict)
+            {
+                result = item.Value.Where(x => x.City == city).ToList();
+            }
+            Console.WriteLine("the count of the contact in the city {0} is {1}",dictCityPerson,result.Count);
+        }
+
+        internal void getStateContactsCount()
+        {
+            Console.WriteLine("Enter the State name to search");
+            string state = Console.ReadLine();
+            bool isPresent = false;
+            List<Contact> result = new List<Contact>();
+            foreach (var item in dict)
+            {
+                result = item.Value.Where(x => x.State == state).ToList();
+            }
+            Console.WriteLine("the count of the contact in the city {0} is {1}", dictCityPerson, result.Count);
         }
     }
 }
