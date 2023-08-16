@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Net.WebSockets;
 
 namespace AddressBook
 {
@@ -198,7 +199,7 @@ namespace AddressBook
             {
                 result = item.Value.Where(x => x.City == city).ToList();
             }
-            Console.WriteLine("the count of the contact in the city {0} is {1}",dictCityPerson,result.Count);
+            Console.WriteLine("the count of the contact in the city {0} is {1}", city, result.Count);
         }
 
         internal void getStateContactsCount()
@@ -211,7 +212,16 @@ namespace AddressBook
             {
                 result = item.Value.Where(x => x.State == state).ToList();
             }
-            Console.WriteLine("the count of the contact in the city {0} is {1}", dictCityPerson, result.Count);
+            Console.WriteLine("the count of the contact in the city {0} is {1}", state, result.Count);
+        }
+
+        internal void SortUsingName()
+        {
+            foreach(var data in dict.Values)
+            {
+                data.Sort((x,y)=>x.FirstName.CompareTo(y.FirstName));
+            }
+            Display();
         }
     }
 }

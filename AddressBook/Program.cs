@@ -12,7 +12,7 @@ namespace AddressBook
             while (flag) 
             {
                 Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary\n6.Add To JsonFile\n7.Read From Dictonary\n8.search using" +
-                    "city\n9.Search contact using State\n10.City Contact Count\n11.State Contact Count");
+                    "city\n9.Search contact using State\n10.City Contact Count\n11.State Contact Count\n12.sort using name");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -27,6 +27,7 @@ namespace AddressBook
                     case 9:  address.SearchUsingState();break;
                     case 10: address.getCityContactsCount();break;
                     case 11: address.getStateContactsCount();break;
+                    case 12: address.SortUsingName();break;
                     default: flag=false;break;
                 }            
             }
