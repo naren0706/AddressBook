@@ -221,7 +221,22 @@ namespace AddressBook
             {
                 data.Sort((x,y)=>x.FirstName.CompareTo(y.FirstName));
             }
-            Display();
+        }
+
+        internal void SortUsingState()
+        {
+            foreach (var data in dict.Values)
+            {
+                data.Sort((x, y) => x.State.CompareTo(y.State));
+            }
+        }
+
+        internal void SortUsingCity()
+        {
+            foreach (var data in dict.Values)
+            {
+                data.Sort((x, y) => x.City.CompareTo(y.City));
+            }
         }
     }
 }
