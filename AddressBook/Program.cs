@@ -4,6 +4,7 @@ namespace AddressBook
     class Program
     {
         static string filePath = @"E:\BridgeGateProblems\AddressBook\AddressBook\AddressBookData.json";
+        static string contactCsvfilePath = @"E:\BridgeGateProblems\AddressBook\AddressBook\contacts.csv";
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to address book problem statement");
@@ -11,8 +12,8 @@ namespace AddressBook
             AddressBooks address = new AddressBooks();
             while (flag) 
             {
-                Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary\n6.Add To JsonFile\n7.Read From Dictonary\n8.search using" +
-                    "city\n9.Search contact using State\n10.City Contact Count\n11.State Contact Count\n12.sort using name\n13.sort using state\n14.sort using City");
+                Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary\n6.Add To JsonFile\n7.Read From Json to dictonary\n8.search using" +
+                    "city\n9.Search contact using State\n10.City Contact Count\n11.State Contact Count\n12.sort using name\n13.sort using state\n14.sort using City\n15.write to csv file");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -30,6 +31,8 @@ namespace AddressBook
                     case 12: address.SortUsingName();break;
                     case 13: address.SortUsingState();break;
                     case 14: address.SortUsingCity();break;
+                    case 15: address.WriteContactsToFile(contactCsvfilePath);break;
+                    case 16: address.ReadContactsFromFile(contactCsvfilePath);break;
                     default: flag=false;break;
                 }            
             }
