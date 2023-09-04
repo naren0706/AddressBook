@@ -1,0 +1,3 @@
+ravi,naren,nk,avinashi,tirupur,tn,641654,1234567890,naren@2002
+ravi,suren,sk,avinashi,tirupur,tn,641654,0987654321,suren@gmail.com
+ravi,shan,sk,avinashi,tirupur,tn,641654,67890-54321,shan@gmail.com

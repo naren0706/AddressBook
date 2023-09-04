@@ -230,7 +230,7 @@ namespace AddressBook
                 data.Sort((x, y) => x.City.CompareTo(y.City));
             }
         }
-        internal void ReadContactsFromFile(string filePath)
+        internal void ReadContactsFromCsv(string filePath)
         {
             using (StreamReader reader = new StreamReader(filePath))
             {
@@ -262,7 +262,7 @@ namespace AddressBook
                 }
             }
         }
-        internal void WriteContactsToFile(string fileName)
+        internal void WriteContactsToCsv(string fileName)
         {
             using (StreamWriter writer = new StreamWriter(fileName))
             {
