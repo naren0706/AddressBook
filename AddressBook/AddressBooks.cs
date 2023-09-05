@@ -8,11 +8,13 @@ namespace AddressBook
     internal class AddressBooks
     {
         List<Contact> addressBook = new List<Contact>();
-        Dictionary<string, List<Contact>> dict = new Dictionary<string, List<Contact>>();
+        public static Dictionary<string, List<Contact>> dict = new Dictionary<string, List<Contact>>();
         Dictionary<string, List<Contact>> dictCityPerson = new Dictionary<string, List<Contact>>();
         Dictionary<string, List<Contact>> dictStatePerson = new Dictionary<string, List<Contact>>();
-
-        
+        public Dictionary<string, List<Contact>> getDict()
+        {
+            return dict;
+        }
         public void AddToJsonFile(string filePath)
         {
             var json = JsonConvert.SerializeObject(dict);
@@ -116,7 +118,6 @@ namespace AddressBook
         }
         public void DeleteContact()
         {
-
             Console.WriteLine("Enter your name");
             string name = Console.ReadLine();
             Console.WriteLine("Enter first name or last name to delete contact");

@@ -12,11 +12,12 @@ namespace AddressBook
             Console.WriteLine("Welcome to address book problem statement");
             bool flag = true;
             AddressBooks address = new AddressBooks();
+            DataBase dataBase = new DataBase();
             while (flag) 
             {
                 Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary\n6.Add To JsonFile\n7.Read From Json to dictonary\n8.search using" +
                     "city\n9.Search contact using State\n10.City Contact Count\n11.State Contact Count\n12.sort using name\n13.sort using state\n14.sort using City\n15.write to csv file" +
-                    "\n16.Read from csv file\n17.read from text file\n18.write to text file");
+                    "\n16.Read from csv file\n17.read from text file\n18.write to text file\n19.Add to dataBase");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -38,9 +39,13 @@ namespace AddressBook
                     case 16: address.ReadContactsFromCsv(contactCsvPath);break;
                     case 17: address.ReadContactsFromCsv(contactFilePath); break;
                     case 18: address.WriteContactsToCsv(contactFilePath); break;
+                    case 19: dataBase.AddDetails(); break;
                     default: flag=false;break;
-                }            
+                }
             }
+            //dataBase.CreateTable();
+            //dataBase.AddDetails();
+            dataBase.GetAllDetails();
         }
     }
 }
