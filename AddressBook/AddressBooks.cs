@@ -27,7 +27,7 @@ namespace AddressBook
         }
         public void CreateContact()
         {
-            Console.WriteLine("Enter Firstname, Last Name , address , city, state , zip , Email, PhoneNumber :");
+            Console.WriteLine("Enter Firstname, Last Name , address , city, state , zip , Email, PhoneNumber,Owner Name :");
             Contact contact = new Contact()
             {
                 FirstName = Console.ReadLine(),
@@ -38,7 +38,7 @@ namespace AddressBook
                 Zip = Console.ReadLine(),
                 Email = Console.ReadLine(),
                 PhoneNumber = Console.ReadLine(),
-
+                OwnerName=Console.ReadLine()
             };
             Console.WriteLine("_______________");
             bool isPresent = false;
