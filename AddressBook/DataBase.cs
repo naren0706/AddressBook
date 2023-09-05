@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -167,6 +168,43 @@ namespace AddressBook
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.AddWithValue("@startTime", start);
             com.Parameters.AddWithValue("@endTime", end);
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            con.Open();
+            da.Fill(dt);
+            con.Close();
+            foreach (DataRow dr in dt.Rows)
+            {
+                details.Add(
+                    new Contact
+                    {
+                        Id = Convert.ToInt32(dr["id"]),
+                        FirstName = Convert.ToString(dr["firstName"]),
+                        LastName = Convert.ToString(dr["lastName"]),
+                        ContactDate = Convert.ToDateTime(dr["ContactTime"]),
+                        Address = Convert.ToString(dr["address"]),
+                        City = Convert.ToString(dr["city"]),
+                        State = Convert.ToString(dr["state"]),
+                        Email = Convert.ToString(dr["email"]),
+                        Zip = Convert.ToString(dr["zip"]),
+                        PhoneNumber = Convert.ToString(dr["phonenumber"]),
+                        OwnerName = Convert.ToString(dr["OwnerName"])
+                    }
+                    );
+            }
+            foreach (var data in details)
+            {
+                Console.WriteLine(data.Id + " " + data.FirstName + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email + " " + data.ContactDate + " " + data.OwnerName);
+            }
+        }
+
+        internal void GetUsingCityandstate(string City,string State)
+        {
+            details = new List<Contact>();
+            SqlCommand com = new SqlCommand("GetDetailsUsingCityState", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@City", City);
+            com.Parameters.AddWithValue("@State", State);
             SqlDataAdapter da = new SqlDataAdapter(com);
             DataTable dt = new DataTable();
             con.Open();

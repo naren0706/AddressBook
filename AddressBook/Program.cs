@@ -58,9 +58,10 @@ namespace AddressBook
             //    OwnerName = Console.ReadLine()
             //};
             //dataBase.UpdateDetails(contact);
-            DateTime start = new DateTime(12,12,12);
-            DateTime end = DateTime.Now;
-            dataBase.GetDetailsInTimeRange(start,end);
+            //DateTime start = new DateTime(12,12,12);
+            //DateTime end = DateTime.Now;
+            //dataBase.GetDetailsInTimeRange(start,end);
+            dataBase.GetUsingCityandstate("chennai","TamilNadu");
         }
     }
 }
