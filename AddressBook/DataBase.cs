@@ -160,5 +160,41 @@ namespace AddressBook
             }
         }
 
+        internal void GetDetailsInTimeRange(DateTime start, DateTime end)
+        {
+            details = new List<Contact>();
+            SqlCommand com = new SqlCommand("GetDetailsInTimeRange", con);
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@startTime", start);
+            com.Parameters.AddWithValue("@endTime", end);
+            SqlDataAdapter da = new SqlDataAdapter(com);
+            DataTable dt = new DataTable();
+            con.Open();
+            da.Fill(dt);
+            con.Close();
+            foreach (DataRow dr in dt.Rows)
+            {
+                details.Add(
+                    new Contact
+                    {
+                        Id = Convert.ToInt32(dr["id"]),
+                        FirstName = Convert.ToString(dr["firstName"]),
+                        LastName = Convert.ToString(dr["lastName"]),
+                        ContactDate = Convert.ToDateTime(dr["ContactTime"]),
+                        Address = Convert.ToString(dr["address"]),
+                        City = Convert.ToString(dr["city"]),
+                        State = Convert.ToString(dr["state"]),
+                        Email = Convert.ToString(dr["email"]),
+                        Zip = Convert.ToString(dr["zip"]),
+                        PhoneNumber = Convert.ToString(dr["phonenumber"]),
+                        OwnerName = Convert.ToString(dr["OwnerName"])
+                    }
+                    );
+            }
+            foreach (var data in details)
+            {
+                Console.WriteLine(data.Id + " " + data.FirstName + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email + " " + data.ContactDate + " " + data.OwnerName);
+            }
+        }
     }
 }
