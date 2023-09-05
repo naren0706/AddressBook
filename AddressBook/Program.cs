@@ -6,7 +6,6 @@ namespace AddressBook
         static string filePath = @"E:\BridgeGateProblems\AddressBook\AddressBook\AddressBookData.json";
         static string contactCsvPath = @"E:\BridgeGateProblems\AddressBook\AddressBook\contacts.csv";
         private static string contactFilePath = @"E:\BridgeGateProblems\AddressBook\AddressBook\contacts.txt";
-
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to address book problem statement");
@@ -15,9 +14,14 @@ namespace AddressBook
             DataBase dataBase = new DataBase();
             while (flag) 
             {
-                Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n4.Delete contact\n5.add To Dictonary\n6.Add To JsonFile\n7.Read From Json to dictonary\n8.search using" +
-                    "city\n9.Search contact using State\n10.City Contact Count\n11.State Contact Count\n12.sort using name\n13.sort using state\n14.sort using City\n15.write to csv file" +
-                    "\n16.Read from csv file\n17.read from text file\n18.write to text file\n19.Add to dataBase");
+                Console.WriteLine("1.create new contact \n2.edit contact \n3.Display\n" +
+                    "4.Delete contact\n5.add To Dictonary\n" +
+                    "6.Add To JsonFile\n7.Read From Json to dictonary\n8.search using" +
+                    "city\n9.Search contact using State\n10.City Contact Count\n" +
+                    "11.State Contact Count\n12.sort using name\n" +
+                    "13.sort using state\n14.sort using City\n15.write to csv file" +
+                    "\n16.Read from csv file\n17.read from text file\n" +
+                    "18.write to text file\n19.Add to dataBase");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
