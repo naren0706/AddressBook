@@ -1,6 +1,6 @@
-drop table ownerTable
+drop table ContactDetails
 
-create procedure AddContactDetails
+alter procedure AddContactDetails
 (
 	@firstName varchar(max),
 	@lastName varchar(max),
@@ -15,10 +15,17 @@ create procedure AddContactDetails
 )
 as
 begin
-insert Into AddressBookDetails values(@firstname,@lastName,@address,@city,@state,@zip,@phonenumber,@email,@contact,@ownerName)
+insert Into ContactDetails values(@firstname,@lastName,@address,@city,@state,@zip,@phonenumber,@email,@contact,@ownerName)
 End
 
+create procedure GetAllDetails
+as
+begin
+select * from contactdetails
+End
 
 insert Into AddressBookDetails values('a','a','a','a','a','a','a','a','a','a')
 
 drop table AddressBookDetails
+
+select * from ContactDetails

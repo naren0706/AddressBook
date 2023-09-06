@@ -66,7 +66,7 @@ namespace AddressBook
             //DateTime end = DateTime.Now;
             //dataBase.GetDetailsInTimeRange(start,end);
             //dataBase.GetUsingCityandstate("chennai","TamilNadu");
-
+            dataBase.AddUsingThreds();
         }
     }
 }

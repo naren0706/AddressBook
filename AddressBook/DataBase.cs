@@ -234,5 +234,42 @@ namespace AddressBook
                 Console.WriteLine(data.Id + " " + data.FirstName + " " + data.LastName + " " + data.Address + " " + data.City + " " + data.State + " " + data.Zip + " " + data.PhoneNumber + " " + data.Email + " " + data.ContactDate + " " + data.OwnerName);
             }
         }
+        public void AddUsingThreds()
+        {
+            DateTime start = DateTime.Now;
+            AddressBooks addressBooks = new AddressBooks();
+            Dictionary<string, List<Contact>> dict = addressBooks.getDict();
+            Task thread = new Task(
+            () =>
+            {
+                foreach (var contact in dict)
+                {
+                    foreach (var data in contact.Value)
+                    {
+                        DateTime randomDateTime = new DateTime(R.Next(1900, 2023), R.Next(12), R.Next(31));
+                        SqlCommand com = new SqlCommand("AddContactDetails", con);
+                        com.CommandType = CommandType.StoredProcedure;
+                        com.Parameters.AddWithValue("@firstName", data.FirstName);
+                        com.Parameters.AddWithValue("@lastName", data.LastName);
+                        com.Parameters.AddWithValue("@address", data.Address);
+                        com.Parameters.AddWithValue("@city", data.City);
+                        com.Parameters.AddWithValue("@state", data.State);
+                        com.Parameters.AddWithValue("@zip", data.Zip);
+                        com.Parameters.AddWithValue("@phonenumber", data.PhoneNumber);
+                        com.Parameters.AddWithValue("@email", data.Email);
+                        com.Parameters.AddWithValue("@contact", randomDateTime);
+                        com.Parameters.AddWithValue("@OwnerName", contact.Key);
+                        con.Open();
+                        com.ExecuteNonQuery();
+                        Console.WriteLine("Contact Added");
+                        con.Close();
+                    }
+                }
+            });
+            //thread.Start();
+            //thread.Wait();
+            DateTime end = DateTime.Now;
+            Console.WriteLine("Duration with Thread " + (end - start));
+        }
     }
 }
